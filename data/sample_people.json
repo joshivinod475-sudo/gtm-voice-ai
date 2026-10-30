@@ -1,0 +1,14 @@
+[
+  {"id": "demo1", "first_name": "Maya", "last_name": "Patel", "title": "Practice Manager", "email": "maya@brightsmile-dental.example", "email_status": "verified", "city": "Austin",
+   "organization": {"name": "BrightSmile Dental", "industry": "dental clinics", "estimated_num_employees": 18, "website_url": "https://brightsmile-dental.example"}},
+  {"id": "demo2", "first_name": "Jordan", "last_name": "Lee", "title": "Owner", "email": "jordan@coolbreeze-hvac.example", "email_status": "verified", "city": "Phoenix",
+   "organization": {"name": "CoolBreeze HVAC", "industry": "hvac services", "estimated_num_employees": 34, "website_url": "https://coolbreeze-hvac.example"}},
+  {"id": "demo3", "first_name": "Sam", "last_name": "Rivera", "title": "Founder & Broker", "email": "sam@keystone-realty.example", "email_status": "guessed", "city": "Miami",
+   "organization": {"name": "Keystone Realty", "industry": "real estate", "estimated_num_employees": 12, "website_url": "https://keystone-realty.example"}},
+  {"id": "demo4", "first_name": "Alex", "last_name": "Chen", "title": "Software Engineer", "email": "alex@bigsoft.example", "email_status": "verified", "city": "Seattle",
+   "organization": {"name": "BigSoft", "industry": "computer software", "estimated_num_employees": 5000, "website_url": "https://bigsoft.example"}},
+  {"id": "demo5", "first_name": "Priya", "last_name": "Nair", "title": "Managing Partner", "email": "priya@nairlaw.example", "email_status": "verified", "city": "Chicago",
+   "organization": {"name": "Nair & Co Law", "industry": "law practice", "estimated_num_employees": 22, "website_url": "https://nairlaw.example"}},
+  {"id": "demo6", "first_name": "Chris", "last_name": "Ortiz", "title": "Office Manager", "email": "", "email_status": "", "city": "Denver",
+   "organization": {"name": "QuickFix Plumbing", "industry": "plumbing", "estimated_num_employees": 9, "website_url": ""}}
+]

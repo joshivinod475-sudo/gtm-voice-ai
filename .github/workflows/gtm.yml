@@ -1,0 +1,42 @@
+name: Weekly GTM run
+
+on:
+  schedule:
+    - cron: "30 3 * * 1"   # Mondays 09:00 IST
+  workflow_dispatch:
+    inputs:
+      live:
+        description: "Push leads to Saleshandy (otherwise dry run)"
+        type: boolean
+        default: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+
+      # Remember which Apollo people we already sent, between runs
+      - uses: actions/cache@v4
+        with:
+          path: output/seen.json
+          key: seen-${{ github.run_id }}
+          restore-keys: seen-
+
+      - name: Run pipeline
+        env:
+          APOLLO_API_KEY: ${{ secrets.APOLLO_API_KEY }}
+          SALESHANDY_API_KEY: ${{ secrets.SALESHANDY_API_KEY }}
+          SALESHANDY_STEP_ID: ${{ secrets.SALESHANDY_STEP_ID }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          LIVE: ${{ inputs.live || vars.GTM_LIVE == 'true' }}
+        run: python main.py run $([ "$LIVE" = "true" ] && echo --live)
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: leads
+          path: output/*.csv

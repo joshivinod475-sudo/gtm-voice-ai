@@ -1,0 +1,68 @@
+# Who we sell to and what we say. Edit this file, not the code.
+
+product:
+  name: "VoiceDesk AI"            # change to your product's name
+  one_liner: "an AI voice assistant that answers every call 24/7, books appointments and handles FAQs"
+  proof: "teams using it typically stop missing after-hours calls in the first week"
+  call_to_action: "Worth a 15-minute demo where you can call it yourself?"
+  sender_name: "Vinod"
+
+# Apollo People Search filters (free search, no credits)
+apollo_search:
+  person_titles:
+    - Owner
+    - Founder
+    - CEO
+    - Practice Manager
+    - Office Manager
+    - Operations Manager
+    - Head of Customer Support
+  person_seniorities: [owner, founder, c_suite, director, manager]
+  person_locations: ["United States"]
+  organization_num_employees_ranges: ["5,20", "21,50", "51,200"]
+  q_organization_keyword_tags:
+    - dental
+    - medical clinic
+    - real estate
+    - hvac
+    - plumbing
+    - law firm
+    - insurance agency
+    - auto dealership
+  per_page: 25
+  max_pages: 2
+
+# Lead scoring (0-100). Leads below min_score are dropped.
+scoring:
+  min_score: 60
+  # Industries with lots of inbound phone calls = best fit
+  hot_industries:
+    - dental
+    - medical
+    - health
+    - real estate
+    - hvac
+    - plumbing
+    - construction
+    - legal
+    - law
+    - insurance
+    - automotive
+    - hospitality
+  decision_maker_words: [owner, founder, ceo, president, partner, director, head, manager, vp]
+  ideal_employees: [5, 200]
+
+# Saleshandy prospect field IDs. Run `python main.py fields` to see yours,
+# then paste the IDs here. Custom fields (first_line, pain_point) must be
+# created in Saleshandy first: Settings > Prospect Fields.
+saleshandy:
+  field_ids:
+    first_name: ""
+    last_name: ""
+    email: ""
+    company: ""
+    job_title: ""
+    first_line: ""
+    pain_point: ""
+  conflict_action: noUpdate      # never overwrite a prospect you already have
+  verify_prospects: true
