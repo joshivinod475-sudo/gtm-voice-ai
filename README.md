@@ -13,25 +13,27 @@ flowchart LR
     E -->|--live| F[Saleshandy<br/>sequence]
 ```
 
-## How it works (the 5-year-old version)
+## How it works
 
-Imagine you sell a robot that answers the phone. 🤖📞
+1. **Prospecting (Apollo People Search).** Searches for decision makers
+   (owners, founders, practice and operations managers) at 5-200 employee
+   companies in call-heavy industries: dental and medical clinics, real
+   estate, HVAC, plumbing, legal and insurance. Search does not use credits.
+2. **Enrichment (Apollo Bulk Match).** Reveals work emails and company
+   details in batches of 10. This uses Apollo credits, so `--limit` caps it.
+3. **Lead scoring.** Each lead gets a 0-100 fit score: call-heavy industry
+   (35), decision-maker title (25), company size fit (20), verified email
+   (15) and website present (5). Leads below `min_score` (default 60) or
+   without an email are dropped.
+4. **Personalisation (Claude).** Claude Opus 5.5 writes a subject line,
+   opening line and likely pain point for each lead, using structured output
+   and only the facts provided. Without an API key, industry templates are
+   used instead.
+5. **Sequencing (Saleshandy).** Qualified leads are imported into a
+   3-step sequence that stops automatically when a prospect replies.
 
-1. **Find the kids who need it** (Apollo). We look in a giant phone book for
-   shops that get tons of calls: dentists, plumbers, real-estate agents, law
-   offices. We look for the grown-ups who decide, like the owner.
-2. **Get their mailbox address** (Apollo enrich). The phone book hides email
-   addresses until you spend a sticker (a credit) to see one.
-3. **Give everyone a gold-star score** (scoring). Lots of calls? +35 stars.
-   The boss? +25. Not too big, not too small? +20. Real email? +15. Under 60
-   stars, they don't get a letter.
-4. **Write each one a nice note** (Claude). Not "Dear Sir", but a first line
-   about *their* shop and *their* phone problem.
-5. **Put the letters in the mail truck** (Saleshandy). It sends email 1, waits,
-   sends email 2, waits, sends email 3, and stops when someone replies.
-
-A grown-up checks the letters first: by default nothing is sent until you
-add `--live`.
+Every run writes a CSV for review first. Nothing is sent to Saleshandy
+unless you pass `--live`.
 
 ## Setup
 
